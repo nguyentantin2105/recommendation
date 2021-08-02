@@ -35,7 +35,6 @@ def recommend(userid):
 
     df_buyer = df1[df1['buyerRate'] == userid]
     product_bought = df_buyer['lastOrder'].values
-    print(product_bought)
     
     if (product_bought != 0):
         product_names = list(X.index)
@@ -44,7 +43,7 @@ def recommend(userid):
         correlation_product_ID = correlation_matrix[product_index]
 
 
-        Recommend_for_oldUser = list(X.index[correlation_product_ID > 0.50])
+        Recommend_for_oldUser = list(X.index[correlation_product_ID > 0.45])
         Recommend_for_oldUser.remove(product_bought)
         list_recommend = Recommend_for_oldUser
     else:
@@ -52,4 +51,4 @@ def recommend(userid):
     
     return list_recommend
     
-# recommend('60817365be8a2f0cba7f7640')
+# print(recommend('60dc8cff14cc353d219f6a5d'))
